@@ -1,14 +1,22 @@
 <html xmlns:th="http://thymeleaf.org">
 <head><title>Mars Rover API Application</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
 <body>
 	<div class="container">
 		<h2>Welcome to the Home View!</h2>
-
+		<form method="post" action="" id="frmRoverType">
+		<input type="hidden" id="marsApiRoverData" name="marsApiRoverData" value="" />
+		<div class="btn-group-large" role="group" aria-label="Basic example" style="margin: 2em 0em;">
+  		<button type="button" class="btn btn-secondary" id="marsApiCuriosity" >Curiosity</button>
+  		<button type="button" class="btn btn-secondary" id="marsApiOpportunity">Opportunity</button>
+  		<button type="button" class="btn btn-secondary" id="marsApiSpirit">Spirit</button>
+		</div>
+		</form>
 		<div th:each="index : ${#numbers.sequence(0,roverData.photos.size(),4)}" class="row" style="margin-bottom:2em">
-			<div class="col-sm">
+			<div class="col-sm" th:if="${index < roverData.photos.size()}">
 				<img th:src="${roverData.photos[index].imgSrc}"class="img-fluid"/>
 			</div>
 			<div class="col-sm" th:if="${index+1 < roverData.photos.size()}">
@@ -22,5 +30,6 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="/js/index.js"></script>
 </body>
 </html>
