@@ -3,8 +3,8 @@ package com.blissfullycoding.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.blissfullycoding.response.MarsRoverApiResponse;
@@ -18,19 +18,19 @@ public class HomeController {
 	private MarsRoverApiService roverService;
 	
 	@GetMapping("/")
-	public String getHomeView (ModelMap model) {
-		MarsRoverApiResponse roverData = roverService.getRoverData("opportunity");
+	public String getHomeView (ModelMap model, @RequestParam (required = false) String marsApiRoverData,
+			@RequestParam(required=false) Integer marsSol) {
+		if (StringUtils.isEmpty(marsApiRoverData)) {
+			marsApiRoverData = "opportunity";
+		}
+		if(marsSol == null) {
+			marsSol = 1;
+		}
+		MarsRoverApiResponse roverData = roverService.getRoverData(marsApiRoverData, marsSol);
 		model.put("roverData", roverData);
 		
 		return "index";
 	}
 	
-	@PostMapping("/")
-	public String postHomeView (ModelMap model, @RequestParam String marsApiRoverData) {
-		MarsRoverApiResponse roverData = roverService.getRoverData(marsApiRoverData);
-		model.put("roverData", roverData);
-		
-		return "index";
-	}
 	}
 	
