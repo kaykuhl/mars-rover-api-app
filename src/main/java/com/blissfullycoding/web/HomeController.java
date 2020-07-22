@@ -7,6 +7,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.blissfullycoding.dto.HomeDto;
 import com.blissfullycoding.response.MarsRoverApiResponse;
 import com.blissfullycoding.service.MarsRoverApiService;
 
@@ -18,16 +19,16 @@ public class HomeController {
 	private MarsRoverApiService roverService;
 	
 	@GetMapping("/")
-	public String getHomeView (ModelMap model, @RequestParam (required = false) String marsApiRoverData,
-			@RequestParam(required=false) Integer marsSol) {
-		if (StringUtils.isEmpty(marsApiRoverData)) {
-			marsApiRoverData = "opportunity";
+	public String getHomeView (ModelMap model, HomeDto homeDto) {
+		if (StringUtils.isEmpty(homeDto.getMarsApiRoverData())) {
+			homeDto.setMarsApiRoverData("opportunity");
 		}
-		if(marsSol == null) {
-			marsSol = 1;
+		if(homeDto.getMarsSol() == null) {
+			homeDto.setMarsSol(1);
 		}
-		MarsRoverApiResponse roverData = roverService.getRoverData(marsApiRoverData, marsSol);
+		MarsRoverApiResponse roverData = roverService.getRoverData(homeDto.getMarsApiRoverData(), homeDto.getMarsSol());
 		model.put("roverData", roverData);
+		model.put("homeDto", homeDto);
 		
 		return "index";
 	}
