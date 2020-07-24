@@ -18,4 +18,9 @@ public class MarsRoverApiResponse {
 	public String toString() {
 		return "MarsRoverApiResponse [photos=" + photos + "]";
 	}
+
+	public void setPhotos(List<com.blissfullycoding.service.MarsPhoto> photos2) {
+		// TODO Auto-generated method stub
+		
+	}
 }
