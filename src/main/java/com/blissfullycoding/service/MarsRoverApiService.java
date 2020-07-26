@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.blissfullycoding.dto.HomeDto;
+import com.blissfullycoding.response.MarsPhoto;
 import com.blissfullycoding.response.MarsRoverApiResponse;
 
 
@@ -23,11 +24,10 @@ public class MarsRoverApiService {
 		List<MarsPhoto> photos = new ArrayList<>();
 		MarsRoverApiResponse response =  new MarsRoverApiResponse();
 		
-		apiUrlEndpoints.stream()
-					.forEach(url -> {
+		apiUrlEndpoints.stream().forEach(url -> {
 						MarsRoverApiResponse apiResponse = rt.getForObject(url, MarsRoverApiResponse.class);
 						photos.addAll(apiResponse.getPhotos());
-					});
+						});
 		
 		response.setPhotos(photos);
 		
@@ -51,13 +51,13 @@ public class MarsRoverApiService {
 		if (Boolean.TRUE.equals(homeDto.getCameraMast()) && "curiosity".equalsIgnoreCase(homeDto.getMarsApiRoverData())) {
 			urls.add("https://api.nasa.gov/mars-photos/api/v1/rovers/" + homeDto.getMarsApiRoverData() + "/photos?sol=" + homeDto.getMarsSol() + "&api_key=" + API_KEY + "&camera=MAST");			
 		}
-		if (Boolean.TRUE.equals(homeDto.getCameraMinites() && !"curiosity".equalsIgnoreCase(homeDto.getMarsApiRoverData()))) {
+		if (Boolean.TRUE.equals(homeDto.getCameraMinites()) && !"curiosity".equalsIgnoreCase(homeDto.getMarsApiRoverData())) {
 			urls.add("https://api.nasa.gov/mars-photos/api/v1/rovers/" + homeDto.getMarsApiRoverData() + "/photos?sol=" + homeDto.getMarsSol() + "&api_key=" + API_KEY + "&camera=MINITES");			
 		}
 		if (Boolean.TRUE.equals(homeDto.getCameraNavcam())) {
 			urls.add("https://api.nasa.gov/mars-photos/api/v1/rovers/" + homeDto.getMarsApiRoverData() + "/photos?sol=" + homeDto.getMarsSol() + "&api_key=" + API_KEY + "&camera=NAVCAM");			
 		}
-		if (Boolean.TRUE.equals(homeDto.getCameraPancam() && !"curiosity".equalsIgnoreCase(homeDto.getMarsApiRoverData()))) {
+		if (Boolean.TRUE.equals(homeDto.getCameraPancam()) && !"curiosity".equalsIgnoreCase(homeDto.getMarsApiRoverData())) {
 			urls.add("https://api.nasa.gov/mars-photos/api/v1/rovers/" + homeDto.getMarsApiRoverData() + "/photos?sol=" + homeDto.getMarsSol() + "&api_key=" + API_KEY + "&camera=PANCAM");			
 		}
 		if (Boolean.TRUE.equals(homeDto.getCameraRhaz())) {

@@ -48,6 +48,8 @@ public class MarsPhoto {
 	public void setRover(MarsRover rover) {
 		this.rover = rover;
 	}
+	
+	@Override
 	public String toString() {
 		return "MarsPhoto [id=" + id + ", sol=" + sol + ", camera=" + camera + ", imgSrc=" + imgSrc + "]";
 	}
