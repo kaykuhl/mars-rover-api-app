@@ -13,14 +13,10 @@ public class MarsRoverApiResponse {
 	public void setPhotos(List<MarsPhoto> photos) {
 		this.photos = photos;
 	}
-
+	
+	
 	@Override
 	public String toString() {
 		return "MarsRoverApiResponse [photos=" + photos + "]";
-	}
-
-	public void setPhotos(List<com.blissfullycoding.service.MarsPhoto> photos2) {
-		// TODO Auto-generated method stub
-		
 	}
 }

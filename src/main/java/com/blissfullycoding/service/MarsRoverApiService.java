@@ -20,11 +20,11 @@ public class MarsRoverApiService {
 	public MarsRoverApiResponse getRoverData(HomeDto homeDto) {
 		RestTemplate rt = new RestTemplate();
 		
-		List<String> urlEndpoints = getUrlEndpoints(homeDto);
+		List<String> apiUrlEndpoints = getApiUrlEndpoints(homeDto);
 		List<MarsPhoto> photos = new ArrayList<>();
 		MarsRoverApiResponse response =  new MarsRoverApiResponse();
 		
-		urlEndpoints.stream()
+		apiUrlEndpoints.stream()
 					.forEach(url -> {
 						MarsRoverApiResponse apiResponse = rt.getForObject(url, MarsRoverApiResponse.class);
 						photos.addAll(apiResponse.getPhotos()); 
@@ -35,7 +35,7 @@ public class MarsRoverApiService {
 		return response;
 	}
 	
-	public List<String> getUrlEndpoints (HomeDto homeDto) {
+	public List<String> getApiUrlEndpoints (HomeDto homeDto) {
 		List<String> urls = new ArrayList<>();		
 		if(Boolean.TRUE.equals(homeDto.getCameraFhaz())) {
 			urls.add("https://api.nasa.gov/mars-photos/api/v1/rovers/" + homeDto.getMarsApiRoverData() + "/photos?sol=" + homeDto.getMarsSol() + "&api_key=" + API_KEY + "&camera=FHAZ");
