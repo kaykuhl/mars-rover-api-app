@@ -14,7 +14,6 @@ public class MarsRoverApiResponse {
 		this.photos = photos;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "MarsRoverApiResponse [photos=" + photos + "]";

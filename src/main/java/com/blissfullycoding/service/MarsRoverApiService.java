@@ -11,7 +11,6 @@ import com.blissfullycoding.dto.HomeDto;
 import com.blissfullycoding.response.MarsRoverApiResponse;
 
 
-
 @Service
 public class MarsRoverApiService {
 	
@@ -27,9 +26,9 @@ public class MarsRoverApiService {
 		apiUrlEndpoints.stream()
 					.forEach(url -> {
 						MarsRoverApiResponse apiResponse = rt.getForObject(url, MarsRoverApiResponse.class);
-						photos.addAll(apiResponse.getPhotos()); 
+						photos.addAll(apiResponse.getPhotos());
 					});
-					
+		
 		response.setPhotos(photos);
 		
 		return response;
