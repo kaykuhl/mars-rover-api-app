@@ -10,7 +10,7 @@
 
 <body>
 	<div class="container">
-		<h2>Welcome to the Home View!</h2>
+		<h2>Welcome to the Mars Rover API Web App</h2>
 
 		<form method="get" action="" id="frmRoverType">
 
@@ -22,15 +22,18 @@
 					id="marsApiCuriosity">Curiosity</button>
 				<button type="button" class="btn btn-secondary"
 					id="marsApiOpportunity">Opportunity</button>
-				<button type="button" class="btn btn-secondary" id="marsApiSpirit">Spirit</button>
+				<button type="button" class="btn btn-secondary" 
+				id="marsApiSpirit">Spirit</button>
 			</div>
+			
+
 
 			<div class="row">
 				<div class="col-12 col-md-4">
 					<div class="form-check">
 						<input class="form-check-input" type="checkbox"
 							th:field="${homeDto.cameraFhaz}"> <label
-							class="form-check-label" for="cameraFhaz1"> Front Hazard
+							class="form-check-label" for="cameraFhaz1" th:attr="disabled=${!#lists.contains(validCameras,'FHAZ') ? 'disabled' : 'false'}"> Front Hazard
 							Avoidance Camera </label>
 					</div>
 				</div>
@@ -38,15 +41,15 @@
 					<div class="form-check">
 						<input class="form-check-input" type="checkbox"
 							th:field="${homeDto.cameraRhaz}"> <label
-							class="form-check-label" for="cameraRhaz1"> Rear Hazard
+							class="form-check-label" for="cameraRhaz1" th:attr="disabled=${!#lists.contains(validCameras,'RHAZ') ? 'disabled' : 'false'}"> Rear Hazard
 							Avoidance Camera </label>
 					</div>
 				</div>
 				<div class="col-12 col-md-4">
 					<div class="form-check">
 						<input class="form-check-input" type="checkbox"
-							th:field="${homeDto.cameraMast}"> <label
-							class="form-check-label" for="cameraMast1"> Mast Camera </label>
+							th:field="${homeDto.cameraMast}" th:attr="disabled=${!#lists.contains(validCameras,'MAST') ? 'disabled' : 'false'}"> 
+							<label class="form-check-label" for="cameraMast1"> Mast Camera </label>
 					</div>
 				</div>
 			</div>
@@ -55,7 +58,7 @@
 				<div class="col-12 col-md-4">
 					<div class="form-check">
 						<input class="form-check-input" type="checkbox"
-							th:field="${homeDto.cameraChemcam}"> <label
+							th:field="${homeDto.cameraChemcam}" th:attr="disabled=${!#lists.contains(validCameras,'CHEMCAM') ? 'disabled' : 'false'}"> <label
 							class="form-check-label" for="cameraChemcam1"> Chemistry
 							and Camera Complex </label>
 					</div>
@@ -63,7 +66,7 @@
 				<div class="col-12 col-md-4">
 					<div class="form-check">
 						<input class="form-check-input" type="checkbox"
-							th:field="${homeDto.cameraMahli}"> <label
+							th:field="${homeDto.cameraMahli}" th:attr="disabled=${!#lists.contains(validCameras,'MAHLI') ? 'disabled' : 'false'}"> <label
 							class="form-check-label" for="cameraMahli1"> Mars Hand
 							Lens Imager </label>
 					</div>
@@ -71,7 +74,7 @@
 				<div class="col-12 col-md-4">
 					<div class="form-check">
 						<input class="form-check-input" type="checkbox"
-							th:field="${homeDto.cameraMardi}"> <label
+							th:field="${homeDto.cameraMardi}" th:attr="disabled=${!#lists.contains(validCameras,'MARDI') ? 'disabled' : 'false'}"> <label
 							class="form-check-label" for="cameraMardi1"> Mars Descent
 							Imager </label>
 					</div>
@@ -82,7 +85,7 @@
 				<div class="col-12 col-md-4">
 					<div class="form-check">
 						<input class="form-check-input" type="checkbox"
-							th:field="${homeDto.cameraNavcam}"> <label
+							th:field="${homeDto.cameraNavcam}" th:attr="disabled=${!#lists.contains(validCameras,'NAVCAM') ? 'disabled' : 'false'}"> <label
 							class="form-check-label" for="cameraNavcam1"> Navigation
 							Camera </label>
 					</div>
@@ -90,7 +93,7 @@
 				<div class="col-12 col-md-4">
 					<div class="form-check">
 						<input class="form-check-input" type="checkbox"
-							th:field="${homeDto.cameraPancam}"> <label
+							th:field="${homeDto.cameraPancam}" th:attr="disabled=${!#lists.contains(validCameras,'PANCAM') ? 'disabled' : 'false'}"> <label
 							class="form-check-label" for="cameraPancam1"> Panoramic
 							Camera </label>
 					</div>
@@ -98,7 +101,7 @@
 				<div class="col-12 col-md-4">
 					<div class="form-check">
 						<input class="form-check-input" type="checkbox"
-							th:field="${homeDto.cameraMinites}"> <label
+							th:field="${homeDto.cameraMinites}" th:attr="disabled=${!#lists.contains(validCameras,'MINITES') ? 'disabled' : 'false'}"> <label
 							class="form-check-label" for="cameraMinites1"> Miniature
 							Thermal Emission Spectrometer (Mini-TES) </label>
 					</div>
