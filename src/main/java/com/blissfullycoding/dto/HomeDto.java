@@ -10,7 +10,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="mars_api_preferences")
 public class HomeDto {
-	private Long id;
 	private Long userId;
 	private String marsApiRoverData;
 	private Integer marsSol;
@@ -26,14 +25,7 @@ public class HomeDto {
 	private Boolean rememberPreferences;
 
 	
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)	
 	public Long getUserId() {
 		return userId;
 	}

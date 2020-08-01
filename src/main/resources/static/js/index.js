@@ -1,5 +1,4 @@
 let userId = localStorage.get('userId');
-
 if (userId == null || userId == '') {
 	userId = localStorage.getItem('userId');
 }
