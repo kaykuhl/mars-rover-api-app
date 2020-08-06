@@ -69,22 +69,16 @@ public class MarsRoverApiService {
 		return urls;
 	}
 
-	public Map<String, List<String>> getValidCameras() {
-		return validCameras;
-	}
-
-	public void setValidCameras(Map<String, List<String>> validCameras) {
-		this.validCameras = validCameras;
-	}
+	  public Map<String, List<String>> getValidCameras() {
+		    return validCameras;
+		  }
 
 	public HomeDto save(HomeDto homeDto) {
-		return preferencesRepo.save(homeDto);
-		
-	}
+		    return preferencesRepo.save(homeDto);
+		  }
 
 	public HomeDto findByUserId(Long userId) {
-		return preferencesRepo.findByUserId(userId);
-	}
-	
+		    return preferencesRepo.findByUserId(userId);
+		  }
 	
 }
